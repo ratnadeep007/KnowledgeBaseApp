@@ -49,7 +49,7 @@ export default function({ navigation }) {
                     </View>
                 </TouchableNativeFeedback>
             </View>
-            <ScrollView style={tw`w-full h-full flex-col p-3`}>
+            <ScrollView style={tw`w-full h-full flex-col p-3`} contentContainerStyle={tw`pb-3`}>
             {
               techs.map(tech => <Card key={tech.id} tech={tech} navigation={navigation} />)
             }

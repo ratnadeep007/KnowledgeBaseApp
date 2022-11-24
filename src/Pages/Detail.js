@@ -1,5 +1,6 @@
 import tw from 'twrnc';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default function Detail({ route, navigation }) {
     const openUrl = (uri) => {
@@ -25,12 +26,24 @@ export default function Detail({ route, navigation }) {
                     route.params.tech.type.map(t => <Text style={tw`mr-3 bg-cyan-300 rounded-lg p-2`} key={Math.random()}>{t}</Text>)
                 }
                 </View>
-                <TouchableWithoutFeedback onPress={e => openUrl(route.params.tech.github_url)}>
-                    <Text style={tw`mt-3 text-white font-semibold underline`}>{route.params.tech.github_url}</Text>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={e => openUrl(route.params.tech.product_url)}>
-                    <Text style={tw`mt-3 text-white font-semibold underline`}>{route.params.tech.product_url}</Text>
-                </TouchableWithoutFeedback>
+                {
+                    route.params.tech.github_url ? 
+                        <TouchableWithoutFeedback onPress={e => openUrl(route.params.tech.github_url)}>
+                            <View style={tw`flex-row items-center mt-2`}>
+                                <Icon name="link" color="white" size={15} style={tw`mr-2`} />
+                                <Text style={tw`text-white font-semibold underline`}>{route.params.tech.github_url}</Text>
+                            </View>
+                        </TouchableWithoutFeedback> : null
+                }
+                {
+                    route.params.tech.product_url ?
+                      <TouchableWithoutFeedback onPress={e => openUrl(route.params.tech.product_url)}>
+                          <View style={tw`flex-row items-center mt-2`}>
+                              <Icon name="link" color="white" size={15} style={tw`mr-2`} />
+                              <Text style={tw`text-white font-semibold underline`}>{route.params.tech.product_url}</Text>
+                          </View>
+                      </TouchableWithoutFeedback> : null
+                }
             </View>
 
             <View style={tw`mt-3`}>
