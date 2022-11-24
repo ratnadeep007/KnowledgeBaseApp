@@ -1,7 +1,5 @@
 import tw from 'twrnc';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
-import { WebView } from 'react-native-webview';
-
 
 export default function Detail({ route, navigation }) {
     const openUrl = (uri) => {

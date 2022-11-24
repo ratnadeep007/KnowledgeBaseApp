@@ -1,9 +1,5 @@
-import PocketBase from 'pocketbase';
-import { useState, useEffect } from 'react';
 import tw from 'twrnc';
-import { Text, View, ScrollView, TextInput, TouchableNativeFeedback } from 'react-native';
-
-import Card from '../Components/Card';
+import { Text, View, TouchableNativeFeedback } from 'react-native';
 
 export default function Home({ navigation }) {
 

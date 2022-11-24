@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/f69db8fb-97a3-42e5-98a0-1e5b64d336b6"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -30,6 +31,9 @@
     },
     "android": {
       "package": "com.ratnadeep007.KnowledgeBase"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
