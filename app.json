@@ -20,14 +20,16 @@
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f69db8fb-97a3-42e5-98a0-1e5b64d336b6"
+      }
+    },
+    "android": {
+      "package": "com.ratnadeep007.KnowledgeBase"
     }
   }
 }
