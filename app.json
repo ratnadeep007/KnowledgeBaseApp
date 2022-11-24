@@ -2,7 +2,8 @@
   "expo": {
     "name": "KnowledgeBase",
     "slug": "KnowledgeBase",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "sdkVersion": "47.0.8",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
