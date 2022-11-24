@@ -1,5 +1,7 @@
 import tw from 'twrnc';
 import { Text, View, TouchableNativeFeedback } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
 
 export default function Home({ navigation }) {
 
@@ -8,6 +10,8 @@ export default function Home({ navigation }) {
     }
 
     return (
+      <SafeAreaView>
+        <StatusBar backgroundColor="black" />
         <View style={tw`bg-green-100 h-full w-full flex-col items-center justify-center`}>
             <TouchableNativeFeedback onPress={goToTechs}>
                 <View style={tw`px-6 py-6 bg-sky-300 rounded-lg`}>
@@ -16,5 +20,6 @@ export default function Home({ navigation }) {
                 </View>
             </TouchableNativeFeedback>
         </View>
+      </SafeAreaView>
     )
 }

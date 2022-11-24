@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Home from './src/Pages/Home';
 import Detail from './src/Pages/Detail';
@@ -12,8 +13,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <SafeAreaView>
-    //   <StatusBar style={tw`bg-green-100`} />
+    <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator 
           initialRouteName="Home"
@@ -45,6 +45,6 @@ export default function App() {
           {/* </Stack.Navigator> */}
         </Stack.Navigator>
       </NavigationContainer>
-    // </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
