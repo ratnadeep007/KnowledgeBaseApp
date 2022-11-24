@@ -32,6 +32,16 @@ export default function Detail({ route, navigation }) {
                     <Text style={tw`mt-3 text-white font-semibold underline`}>{route.params.tech.product_url}</Text>
                 </TouchableWithoutFeedback>
             </View>
+
+            <View style={tw`mt-3`}>
+              <Text style={tw`font-semibold text-lg`}>Articles</Text>
+              <Text style={tw`text-center font-semibold mt-2 text-red-400`}>Not article present for {route.params.tech.name}</Text>
+            </View>
+            
+            <View style={tw`mt-3`}>
+              <Text style={tw`font-semibold text-lg`}>Videos</Text>
+              <Text style={tw`text-center font-semibold mt-2 text-red-400`}>Not Video present for {route.params.tech.name}</Text>
+            </View>
         </View>
     )
 }
