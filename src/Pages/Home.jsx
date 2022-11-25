@@ -11,11 +11,11 @@ export default function Home({ navigation }) {
     }
 
     const goToArticles = () => {
-        
+        navigation.navigate('ArticleList');
     }
 
     const goToVideos = () => {
-        
+        navigation.navigate('VideoList');
     }
 
     return (
@@ -32,20 +32,14 @@ export default function Home({ navigation }) {
             <TouchableNativeFeedback onPress={goToArticles}>
                 <View style={tw`px-6 py-6 bg-sky-300 rounded-lg w-full mb-3`}>
                     <Icon style={tw`text-center`} size={21} name="newspaper" />
-                    <View style={tw`flex-row justify-center items-center`}>
-                      <Text style={tw`text-lg font-semibold text-center mr-2`}>Articles</Text>
-                      <Text style={tw`text-lg text-xs text-red-600 text-center`}>Coming Soon</Text>
-                    </View>
+                    <Text style={tw`text-lg font-semibold text-center mr-2`}>Articles</Text>
                     <Text style={tw`text-center`}>Articles must read to improve your knwoledge</Text>
                 </View>
             </TouchableNativeFeedback>
             <TouchableNativeFeedback onPress={goToVideos}>
                 <View style={tw`px-6 py-6 bg-sky-300 rounded-lg w-full mb-3`}>
                     <Icon style={tw`text-center`} size={21} name="youtube" />
-                    <View style={tw`flex-row justify-center items-center`}>
-                      <Text style={tw`text-lg font-semibold text-center mr-2`}>Videos</Text>
-                      <Text style={tw`text-lg text-xs text-red-600 text-center`}>Coming Soon</Text>
-                    </View>
+                    <Text style={tw`text-lg font-semibold text-center mr-2`}>Videos</Text>
                     <Text style={tw`text-center`}>Tech Talks, Tutorials, etc.</Text>
                 </View>
             </TouchableNativeFeedback>

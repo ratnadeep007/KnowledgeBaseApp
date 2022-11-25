@@ -8,6 +8,8 @@ import Detail from './src/Pages/Detail';
 import TechList from './src/Pages/TechList';
 import AddTech from './src/Pages/AddTech';
 import VisitSite from './src/Pages/VisitSite';
+import ArticleList from './src/Pages/ArticleList';
+import VideoList from './src/Pages/VideoList';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +43,14 @@ export default function App() {
           <Stack.Screen
             name="VisitSite"
             component={VisitSite}
+          />
+          <Stack.Screen
+            name="ArticleList"
+            component={ArticleList}
+          />
+          <Stack.Screen
+            name="VideoList"
+            component={VideoList}
           />
           {/* </Stack.Navigator> */}
         </Stack.Navigator>

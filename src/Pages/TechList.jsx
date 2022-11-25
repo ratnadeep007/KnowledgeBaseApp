@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import tw from 'twrnc';
 import { Text, View, ScrollView, TextInput, TouchableNativeFeedback } from 'react-native';
 
-import Card from '../Components/Card';
+import CardTech from '../Components/CardTech';
 
 export default function({ navigation }) {
     const [apiTechs, setApiTechs] = useState([]);
@@ -16,7 +16,9 @@ export default function({ navigation }) {
     const getTechs = async () => {
         const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
 
-        const records = await pb.collection('techs').getFullList(200);
+        const records = await pb.collection('techs').getFullList(200, {
+            expand: 'type'
+        });
         setApiTechs(records); 
         setTechs(records);
     }
@@ -42,15 +44,15 @@ export default function({ navigation }) {
                     style={tw`mr-1 px-3 py-1 rounded-lg bg-green-100 border-2 w-10/12`} 
                     placeholder="Search for project"
                     onChangeText={onChangeText} />
-                <TouchableNativeFeedback onPress={navigatveToAdd}>
+                {/* <TouchableNativeFeedback onPress={navigatveToAdd}>
                     <View style={tw`bg-blue-300 p-2 text-white font-semibold rounded-lg`}>
                         <Text style={tw`font-semibold`}>Add</Text>
                     </View>
-                </TouchableNativeFeedback>
+                </TouchableNativeFeedback> */}
             </View>
             <ScrollView style={tw`w-full h-full flex-col p-3`} contentContainerStyle={tw`pb-3`}>
             {
-              techs.map(tech => <Card key={tech.id} tech={tech} navigation={navigation} />)
+              techs.map(tech => <CardTech key={tech.id} tech={tech} navigation={navigation} />)
             }
           </ScrollView>
         </View>

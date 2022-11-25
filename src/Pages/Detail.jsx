@@ -23,7 +23,7 @@ export default function Detail({ route, navigation }) {
                 <Text style={tw`text-white text-lg mt-3`}>{route.params.tech.description}</Text>
                 <View style={tw`flex-row mt-3`}>
                 {
-                    route.params.tech.type.map(t => <Text style={tw`mr-3 bg-cyan-300 rounded-lg p-2`} key={Math.random()}>{t}</Text>)
+                    route.params.tech.expand.type.map(t => <Text style={tw`mr-3 bg-cyan-300 rounded-lg p-2`} key={Math.random()}>{t.name}</Text>)
                 }
                 </View>
                 {

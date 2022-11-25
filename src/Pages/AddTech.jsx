@@ -2,8 +2,9 @@ import { View, Text, TextInput, TouchableNativeFeedback, ToastAndroid } from 're
 import tw from 'twrnc';
 import Checkbox from 'expo-checkbox';
 import { FlatGrid } from 'react-native-super-grid';
-import { useState, useRef, useReducer } from 'react';
+import { useState, useRef, useReducer, useEffect } from 'react';
 import PocketBase from 'pocketbase';
+import useStore from '../store';
 
 const selectItems = [
     {
@@ -76,22 +77,32 @@ export default function ({ navigation }) {
     const [description, setDescription] = useState();
     const [githubUrl, setGithubUrl] = useState();
     const [productUrl, setProductUrl] = useState();
-    const [tags, setTags] = useState();
     const [isOpenSource, setIsOpenSource] = useState();
-    const [tagItems, setTagItems] = useState(selectItems);
+    const [tagItems, setTagItems] = useState();
     const gridRef = useRef(null);
     const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+    const [tags, setTags] = useStore(state => [state.tags, state.setTags]);
+    const [selectedTagIds, setSelectedTagIds] = useState([]);
+
+    useEffect(() => {
+        if (!tags || !tags.length) {
+            getTags();
+        }
+    }, [tags]);
 
     const changeOpenSource = () => {
         setIsOpenSource(!isOpenSource);
     }
 
+    const getTags = async () => {
+        const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
+        const records = await pb.collection('types').getFullList(200);
+        setTags(records); // going global state zustand
+    }
+
     const setTagsFromCheckbox = (item) => {
-        const tags = tagItems;
-        tags.map(tag => {
-            if (tag.id === item.id) tag.selected = !tag.selected;
-        });
-        setTagItems(tags);
+        const selectedIds = [...selectedTagIds, item.id];
+        setSelectedTagIds(selectedIds);
         forceUpdate();
     }
 
@@ -101,13 +112,10 @@ export default function ({ navigation }) {
             "github_url": githubUrl,
             "product_url": productUrl,
             "description": description,
-            "type": [],
+            "type": selectedTagIds,
             "open_source": isOpenSource,
             "logo": ""
         };
-        let types = [];
-        tagItems.forEach(item => item.selected === true ? types.push(item.name) : null);
-        dataToSend.type = types;
 
         const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
         try {
@@ -148,12 +156,12 @@ export default function ({ navigation }) {
             </View>
             <Text style={tw`mt-3 font-semibold text-lg`}>Select a tag for this project</Text>
             <FlatGrid
-                data={tagItems}
+                data={tags}
                 ref={gridRef}
                 maxHeight={190}
                 renderItem={({item}) => (
                 <View style={tw`flex-row m-2`}>
-                    <Checkbox onValueChange={e => setTagsFromCheckbox(item)} value={item.selected} style={tw`mr-1`} />
+                    <Checkbox onValueChange={e => setTagsFromCheckbox(item)} value={selectedTagIds.includes(item.id)} style={tw`mr-1`} />
                     <Text style={tw`font-semibold`}>{item.name}</Text>
                 </View>)}
             />
