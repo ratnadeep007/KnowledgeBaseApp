@@ -17,8 +17,9 @@ export default function({ navigation }) {
         const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
 
         const records = await pb.collection('techs').getFullList(200, {
-            expand: 'type'
+            expand: 'type,articles(tech),videos(tech)'
         });
+        console.log('record', records);
         setApiTechs(records); 
         setTechs(records);
     }

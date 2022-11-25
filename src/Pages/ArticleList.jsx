@@ -19,7 +19,8 @@ export default function ArticleList({ navigation }) {
         const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
 
         const records = await pb.collection('articles').getFullList(200, {
-            expand: 'type'
+            expand: 'type',
+            filter: 'tech = null'
         });
         console.log(records);
         setApiArticles(records);

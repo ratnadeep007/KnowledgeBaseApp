@@ -14,13 +14,24 @@ export default function CardArticle({ article, navigation }) {
                 <View style={tw`bg-blue-600 rounded-tl-lg rounded-tr-lg p-6`}>
                     <Text style={tw`text-xl font-bold text-white `}>{article.title}</Text>
                     <Text style={tw`text-white mt-1`}>{article.excrept}</Text>
-                    <View style={tw`flex-row mt-3`}>
+                    {
+                        article.expand ? <View style={tw`flex-row mt-3`}>
+                        {
+                            article.expand && article.expand.type && article.expand.type.length ?
+                                article.expand.type.map(t => <View style={tw`bg-cyan-300 p-1 rounded-lg`}>
+                                    <Text key={t.id}>{t.name}</Text>
+                                </View>)
+                                : null
+                        }
+                        </View> : null
+                    }
+                    {/* <View style={tw`flex-row mt-3`}>
                         {
                             article.expand.type.map(t => <View style={tw`bg-cyan-300 p-1 rounded-lg`}>
                                 <Text key={t.id}>{t.name}</Text>
                             </View>)
                         }
-                    </View>
+                    </View> */}
                 </View>
                 <View style={tw`bg-blue-700 flex-row justify-center py-1 rounded-bl-lg rounded-br-lg`}>
                     <Text style={tw`text-white italic`}>Click on card to Read More</Text>
