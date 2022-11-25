@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { View, ScrollView, TextInput, TouchableNativeFeedback, Text } from 'react-native';
+import { View, ScrollView, TextInput, Text } from 'react-native';
 import tw from 'twrnc';
 import PocketBase from 'pocketbase';
-import YoutubePlayer from 'react-native-youtube-iframe';
+
+import CardVideo from "../Components/CardVideo";
 
 export default function({ navigation }) {
     const [apiVideos, setApiVideos] = useState([]);
@@ -18,7 +19,8 @@ export default function({ navigation }) {
         const pb = new PocketBase('https://pocketbase-darklord.fly.dev');
 
         const records = await pb.collection('videos').getFullList(200, {
-            expand: 'type'
+            expand: 'type',
+            filter: 'tech = null'
         });
         console.log('videos', records);
         setApiVideos(records); 
@@ -45,14 +47,7 @@ export default function({ navigation }) {
             </View>
             <ScrollView style={tw`w-full h-full flex-col p-3`} contentContainerStyle={tw`pb-3`}>
             {
-                videos.map(video => <View 
-                    style={tw`bg-blue-500 rounded-lg p-3`}
-                    key={video.id}>
-                    <YoutubePlayer
-                        height={230}
-                        videoId={video.url.split('=')[1]} />
-                    <Text style={tw`text-white font-semibold text-lg`}>{video.name}</Text>
-                </View>)
+                videos.map(video => <CardVideo key={video.id} video={video} />)
             }
             </ScrollView>
         </View>
