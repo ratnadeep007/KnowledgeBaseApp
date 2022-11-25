@@ -2,7 +2,6 @@ import PocketBase from 'pocketbase';
 import { useState, useEffect } from 'react';
 import tw from 'twrnc';
 import { Text, View, ScrollView, TextInput, TouchableNativeFeedback } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Card from '../Components/Card';
 
