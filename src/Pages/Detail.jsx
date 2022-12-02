@@ -41,7 +41,7 @@ export default function Detail({ route, navigation }) {
     }
     
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={tw`grow`}>
             <View style={tw`bg-green-100 h-full w-full p-3`}>
                 <View style={tw`bg-blue-600 rounded-lg p-6`}>
                     <View style={tw`flex-row items-center`}>
