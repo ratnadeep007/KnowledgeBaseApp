@@ -36,13 +36,13 @@ export default function Home({ navigation }) {
                     <Text style={tw`text-center`}>Articles must read to improve your knwoledge</Text>
                 </View>
             </TouchableNativeFeedback>
-            <TouchableNativeFeedback onPress={goToVideos}>
+            {/* <TouchableNativeFeedback onPress={goToVideos}>
                 <View style={tw`px-6 py-6 bg-sky-300 rounded-lg w-full mb-3`}>
                     <Icon style={tw`text-center`} size={21} name="youtube" />
                     <Text style={tw`text-lg font-semibold text-center mr-2`}>Videos</Text>
                     <Text style={tw`text-center`}>Tech Talks, Tutorials, etc.</Text>
                 </View>
-            </TouchableNativeFeedback>
+            </TouchableNativeFeedback> */}
         </View>
       </SafeAreaView>
     )

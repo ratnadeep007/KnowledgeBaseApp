@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 import { useState, useEffect } from 'react';
 import tw from 'twrnc';
-import { Text, View, ScrollView, TextInput, TouchableNativeFeedback } from 'react-native';
+import { Text, View, ScrollView, TextInput, TouchableNativeFeedback, Image } from 'react-native';
 
 import CardTech from '../Components/CardTech';
 
