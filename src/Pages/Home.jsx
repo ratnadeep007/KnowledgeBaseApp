@@ -18,6 +18,14 @@ export default function Home({ navigation }) {
         navigation.navigate('VideoList');
     }
 
+    const goToTools = () => {
+        navigation.navigate('AIToolsList');
+    }
+
+    const goToLearn = () => {
+        navigation.navigate('LearnList');
+    }
+
     return (
       <SafeAreaView>
         <StatusBar backgroundColor="black" />
@@ -34,6 +42,20 @@ export default function Home({ navigation }) {
                     <Icon style={tw`text-center`} size={21} name="newspaper" />
                     <Text style={tw`text-lg font-semibold text-center mr-2`}>Articles</Text>
                     <Text style={tw`text-center`}>Articles must read to improve your knwoledge</Text>
+                </View>
+            </TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={goToTools}>
+                <View style={tw`px-6 py-6 bg-sky-300 rounded-lg w-full mb-3`}>
+                    <Icon style={tw`text-center`} size={21} name="robot" />
+                    <Text style={tw`text-lg font-semibold text-center mr-2`}>AI Tools</Text>
+                    <Text style={tw`text-center`}>Interesting AI Tools to look for.</Text>
+                </View>
+            </TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={goToLearn}>
+                <View style={tw`px-6 py-6 bg-sky-300 rounded-lg w-full mb-3`}>
+                    <Icon style={tw`text-center`} size={21} name="robot" />
+                    <Text style={tw`text-lg font-semibold text-center mr-2`}>Learn</Text>
+                    <Text style={tw`text-center`}>Website where you can learn new things.</Text>
                 </View>
             </TouchableNativeFeedback>
             {/* <TouchableNativeFeedback onPress={goToVideos}>

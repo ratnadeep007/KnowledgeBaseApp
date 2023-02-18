@@ -19,14 +19,11 @@ export default function Detail({ route, navigation }) {
     const setStates = () => {
         if (route.params.tech.expand) {
             setIsExpand(true);
-            console.log(route.params.tech.expand);
             if (route.params.tech.expand['videos(tech)'] && route.params.tech.expand['videos(tech)'].length) {
-                console.log('videos true');
                 setisVideos(true)
                 setVideos(route.params.tech.expand['videos(tech)']);
             }
             if (route.params.tech.expand['articles(tech)'] && route.params.tech.expand['articles(tech)'].length) {
-                console.log('articlesr true');
                 setIsArticles(true);
                 setArticle(route.params.tech.expand['articles(tech)']);
             }

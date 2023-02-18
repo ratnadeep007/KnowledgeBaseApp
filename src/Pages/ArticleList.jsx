@@ -22,7 +22,6 @@ export default function ArticleList({ navigation }) {
             expand: 'type',
             filter: 'tech = null'
         });
-        console.log(records);
         setApiArticles(records);
         setArticles(records);
     }

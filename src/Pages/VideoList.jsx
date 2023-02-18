@@ -22,7 +22,6 @@ export default function({ navigation }) {
             expand: 'type',
             filter: 'tech = null'
         });
-        console.log('videos', records);
         setApiVideos(records); 
         setVideos(records);
     }

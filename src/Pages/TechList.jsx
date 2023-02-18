@@ -19,7 +19,6 @@ export default function({ navigation }) {
         const records = await pb.collection('techs').getFullList(200, {
             expand: 'type,articles(tech),videos(tech)'
         });
-        console.log('record', records);
         setApiTechs(records); 
         setTechs(records);
     }
